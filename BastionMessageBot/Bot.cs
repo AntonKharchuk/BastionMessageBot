@@ -58,7 +58,8 @@ namespace BastionMessageBot
             }
             else
             {
-                   
+                await BotMethods.SendMessage(message.Text);
+                return;
             }
         }
     }
