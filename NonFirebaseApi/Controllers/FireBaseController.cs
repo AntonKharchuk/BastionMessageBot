@@ -17,18 +17,15 @@ namespace NonFirebaseApi.Controllers
                 return NotFound("Obj not found");
             }
 
-            //var ResponseToUser = new LikeVideo
-            //{
-            //    Id = result.Id,
-            //    UserId = result.UserId,
-            //    VideoId = result.VideoId,
-            //    VideoTitle = result.VideoTitle,
-            //    ChannelId = result.ChannelId,
-            //    ChannelTitle = result.ChannelTitle,
-            //    UserName = result.UserName,
-            //};
-            return Ok(result);
+        private async Task SaveTockenToTxt(string token)
+        {
+            using (StreamWriter sw = new StreamWriter(_messageTokenListPath))
+            {
+                await sw.WriteLineAsync(token);
+            }
         }
 
     }
+
+    
 }
