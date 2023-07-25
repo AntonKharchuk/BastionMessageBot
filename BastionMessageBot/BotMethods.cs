@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace BastionMessageBot
 {
-    public class BotMethods
+    internal static class BotMethods
     {
+        public static async Task SendMessage(string message)
+        {
+
+        }
     }
 }
