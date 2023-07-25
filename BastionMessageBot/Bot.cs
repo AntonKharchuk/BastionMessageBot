@@ -56,8 +56,10 @@ namespace BastionMessageBot
                 await botClient.SendTextMessageAsync(message.Chat.Id, "Type your message");
                 return;
             }
-
-            
+            else
+            {
+                   
+            }
         }
     }
 }
