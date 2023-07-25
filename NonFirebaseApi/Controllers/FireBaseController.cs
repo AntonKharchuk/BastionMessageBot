@@ -25,17 +25,13 @@ namespace NonFirebaseApi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> GetRequest([FromBody] string body)
+        public async Task<IActionResult> GetRequest([FromBody] MessageToken body)
         {
-
-            if (!string.IsNullOrEmpty(body))
+            if (body != null)
             {
                 try
                 {
-                    MessageToken messageToken = JsonSerializer.Deserialize<MessageToken>(body);
-
-                    SaveTockenToTxt(messageToken.Token);
-
+                    SaveTockenToTxt(body.Token);
                     return Ok("Token has been added to List");
                 }
                 catch (Exception)
