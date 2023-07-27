@@ -13,10 +13,10 @@ namespace BastionMessageBot
         private readonly HttpClient _client;
         private readonly string _url;
 
-        public BotMethods()
+        public BotMethods(string url)
         {
             _client = new HttpClient();
-            _url = "https://localhost:7251/send-message";
+            _url = url;
         }
         
 
