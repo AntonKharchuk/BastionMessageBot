@@ -58,7 +58,13 @@ namespace BastionMessageBot
             }
             else
             {
-                await BotMethods.SendMessage(message.Text);
+                var statusCode = await BotMethods.SendMessage(message.Text);
+
+                if (statusCode==200)
+                    await botClient.SendTextMessageAsync(message.Chat.Id, "Message sended");
+                else
+                    await botClient.SendTextMessageAsync(message.Chat.Id, "Message not sended");
+
                 return;
             }
         }
