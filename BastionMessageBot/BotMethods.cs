@@ -8,19 +8,19 @@ using System.Threading.Tasks;
 
 namespace BastionMessageBot
 {
-    internal static class BotMethods
+    internal class BotMethods
     {
-        static private readonly HttpClient _client;
-        static private readonly string _url;
+        private readonly HttpClient _client;
+        private readonly string _url;
 
-        static BotMethods()
+        public BotMethods()
         {
             _client = new HttpClient();
             _url = "https://localhost:7251/send-message";
         }
         
 
-        public static async Task<int> SendMessage(string message)
+        public async Task<int> SendMessage(string message)
         {
             var request = new HttpRequestMessage(HttpMethod.Post, _url);
             var messageObj = new Message()
