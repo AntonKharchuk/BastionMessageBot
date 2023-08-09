@@ -19,6 +19,14 @@ namespace BastionMessageBot
 
         private List<string> _audioFileIds;
 
+        private BotMethods _botMethods;
+
+        public Bot(string apiUrl)
+        {
+            _botMethods = new BotMethods(apiUrl);
+
+        }
+
         public async Task Start()
         {
             _audioFileIds = new List<string>();
@@ -58,7 +66,7 @@ namespace BastionMessageBot
             }
             else
             {
-                var statusCode = await BotMethods.SendMessage(message.Text);
+                var statusCode = await _botMethods.SendMessage(message.Text);
 
                 if (statusCode==200)
                     await botClient.SendTextMessageAsync(message.Chat.Id, "Message sended");

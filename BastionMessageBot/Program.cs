@@ -1,7 +1,12 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using BastionMessageBot;
 
-Bot bot = new Bot();
+Console.Write("Write API url: ");
+var apiUrl = Console.ReadLine();
+
+apiUrl = apiUrl.Trim();
+
+Bot bot = new Bot(apiUrl);
 
 bot.Start();
 

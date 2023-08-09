@@ -22,7 +22,7 @@ namespace BastionMessageBot
 
         public async Task<int> SendMessage(string message)
         {
-            var request = new HttpRequestMessage(HttpMethod.Post, _url);
+            var request = new HttpRequestMessage(HttpMethod.Post, _url+ "/send-message");
             var messageObj = new Message()
             {
                 Text = message
@@ -30,6 +30,7 @@ namespace BastionMessageBot
             var json = JsonSerializer.Serialize(messageObj);
             request.Content = new StringContent(json, Encoding.UTF8, "application/json"); // Set the content type to "application/json"
             var response = await _client.SendAsync(request);
+            var content = await response.Content.ReadAsStringAsync();
 
             return (int)response.StatusCode;
         }
